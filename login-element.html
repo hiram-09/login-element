@@ -82,15 +82,19 @@
                         value: '',
                         notify: true
                     },
-                    usuarioCorrecto: String
+                    usuarioCorrecto: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    }
                 };
             }
 
             enviar() {
                 if (this.email === "hiram" && this.pass === "arellano")
-                    this.usuarioCorrecto = "correcto";
+                    this.usuarioCorrecto = true;
                 else
-                    this.usuarioCorrecto = "incorrecto";
+                    this.usuarioCorrecto = false;
             }
         }
 
