@@ -50,8 +50,8 @@
     </style>
     <paper-card>
       <h2>LOGIN</h2>
-      <paper-input type="email" label="E-Mail" value="{{email}}" ></paper-input>
-      <paper-input type="password" label="password" value="{{pass}}" ></paper-input>
+      <paper-input id="user" type="email" label="E-Mail" value="{{email}}" ></paper-input>
+      <paper-input id="pass" type="password" label="password" value="{{pass}}" ></paper-input>
       <paper-checkbox>Remember me</paper-checkbox>
       <paper-button on-click="enviar">LOGIN</paper-button>
     </paper-card>
@@ -91,10 +91,15 @@
             }
 
             enviar() {
-                if (this.email === "hiram" && this.pass === "arellano")
+                let usuario = this.$.user.value;
+                let password = this.$.pass.value;
+                if (usuario === "hiram" && password === "arellano")
                     this.usuarioCorrecto = true;
-                else
+                else {
+                    alert("Contraseña Incorrecta");
                     this.usuarioCorrecto = false;
+                }
+
             }
         }
 
