@@ -1,0 +1,99 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+
+<dom-module id="login-element">
+    <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+      }
+      h2{
+        text-align: center;
+      }
+      paper-button{
+          --paper-button: {
+                background-color: #FF54F9;
+                color: white;
+                width:100%;
+            }
+      }
+      paper-card{
+        --paper-card: {
+          padding: 30px 30px 30px 30px;
+        }
+      }
+      paper-checkbox{
+        padding: 10px 10px 10px 0px;
+        --paper-checkbox-checked-color:#FF54F9;
+        --paper-checkbox-unchecked-color: #FF54F9;
+      }
+      paper-input{
+        --paper-input-container-input-color: blue;
+        --paper-input-container-focus-color: blue;
+        --paper-input-container-underline: {
+            border-color: transparent;
+        }
+        --paper-input-container-underline-focus: {
+            border-color: transparent;
+        }
+        --paper-input-container-input:{
+          background-color: lightgray;          
+        }        
+      }
+      
+    </style>
+    <paper-card>
+      <h2>LOGIN</h2>
+      <paper-input type="email" label="E-Mail" value="{{email}}" ></paper-input>
+      <paper-input type="password" label="password" value="{{pass}}" ></paper-input>
+      <paper-checkbox>Remember me</paper-checkbox>
+      <paper-button on-click="enviar">LOGIN</paper-button>
+    </paper-card>
+  </template>
+
+    <script>
+        /**
+         * `login-element`
+         * 
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class LoginElement extends Polymer.Element {
+            static get is() {
+                return 'login-element';
+            }
+            static get properties() {
+                return {
+                    email: {
+                        type: String,
+                        value: '',
+                        notify: true
+                    },
+                    pass: {
+                        type: String,
+                        value: '',
+                        notify: true
+                    },
+                    usuarioCorrecto: String
+                };
+            }
+
+            enviar() {
+                if (this.email === "hiram" && this.pass === "arellano")
+                    this.usuarioCorrecto = "correcto";
+                else
+                    this.usuarioCorrecto = "incorrecto";
+            }
+        }
+
+        window.customElements.define(LoginElement.is, LoginElement);
+    </script>
+</dom-module>
